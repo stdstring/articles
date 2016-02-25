@@ -1,0 +1,1 @@
+-record(state_data, {pull = "", recognized = "", is_complete = false}).

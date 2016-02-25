@@ -1,0 +1,7 @@
+*.beam
+*.suo
+*.sln.DotSettings.user
+CustomIoC.NET/CastleExample/CastleExample/bin
+CustomIoC.NET/CastleExample/CastleExample/obj
+CustomIoC.NET/CastleExample/packages
+

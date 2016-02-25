@@ -1,0 +1,2 @@
+-record(datetime, {day = 0, month = 0, year = 0, hour = 0, minutes = 0, seconds = 0, milliseconds = 0}).
+-record(format_config, {day = "DD", month = "MM", short_year = "YY", year = "YYYY", hour = "hh", minutes = "mm", seconds = "ss", milliseconds = "ms"}).

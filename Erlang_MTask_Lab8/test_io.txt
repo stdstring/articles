@@ -1,0 +1,185 @@
+%% map time testing
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> lists:map(fun(N) -> math:sqrt(N) end, Data) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> lists:map(fun(N) -> math:sqrt(N) end, Data) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> lists:map(fun(N) -> math:sqrt(N) end, Data) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> lists:map(fun(N) -> math:sqrt(N) end, Data) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:usual_map(fun(N) -> math:sqrt(N) end, Data) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:usual_map(fun(N) -> math:sqrt(N) end, Data) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:usual_map(fun(N) -> math:sqrt(N) end, Data) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:usual_map(fun(N) -> math:sqrt(N) end, Data) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:simple_pmap(fun(N) -> math:sqrt(N) end, Data) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:simple_pmap(fun(N) -> math:sqrt(N) end, Data) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:simple_pmap(fun(N) -> math:sqrt(N) end, Data) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:simple_pmap(fun(N) -> math:sqrt(N) end, Data) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:portion_pmap(fun(N) -> math:sqrt(N) end, Data, 250) end, 100, 100).
+performance_tester:time_test(fun() -> parallel_map:portion_gen_pmap(fun(N) -> math:sqrt(N) end, Data, 250) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:portion_pmap(fun(N) -> math:sqrt(N) end, Data, 2500) end, 10, 100).
+performance_tester:time_test(fun() -> parallel_map:portion_gen_pmap(fun(N) -> math:sqrt(N) end, Data, 2500) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:portion_pmap(fun(N) -> math:sqrt(N) end, Data, 10000) end, 1, 100).
+performance_tester:time_test(fun() -> parallel_map:portion_gen_pmap(fun(N) -> math:sqrt(N) end, Data, 10000) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:portion_pmap(fun(N) -> math:sqrt(N) end, Data, 10000) end, 1, 10).
+performance_tester:time_test(fun() -> parallel_map:portion_gen_pmap(fun(N) -> math:sqrt(N) end, Data, 10000) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:limited_pmap(fun(N) -> math:sqrt(N) end, Data, 250, 4) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:limited_pmap(fun(N) -> math:sqrt(N) end, Data, 2500, 4) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:limited_pmap(fun(N) -> math:sqrt(N) end, Data, 10000, 4) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:limited_pmap(fun(N) -> math:sqrt(N) end, Data, 10000, 4) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:distributed_pmap(fun math:sqrt/1, Data, 250, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:distributed_pmap(fun math:sqrt/1, Data, 2500, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:distributed_pmap(fun math:sqrt/1, Data, 10000, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:distributed_pmap(fun math:sqrt/1, Data, 10000, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_map:smartmsg_pmap(fun(N) -> math:sqrt(N) end, Data, 250, 4) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_map:smartmsg_pmap(fun(N) -> math:sqrt(N) end, Data, 2500, 4) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_map:smartmsg_pmap(fun(N) -> math:sqrt(N) end, Data, 10000, 4) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_map:smartmsg_pmap(fun(N) -> math:sqrt(N) end, Data, 10000, 4) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+pool_helper:start_pool(pmap, ['node1@Ushakov', 'node2@ushakov_mv']).
+performance_tester:time_test(fun() -> parallel_map:pool_pmap_impl(fun math:sqrt/1, Data, 250, 4) end, 100, 100).
+pool_helper:stop_pool().
+
+Data = data_generator:generate_int_data(134217727, 10000).
+pool_helper:start_pool(pmap, ['node1@Ushakov', 'node2@ushakov_mv']).
+performance_tester:time_test(fun() -> parallel_map:pool_pmap_impl(fun math:sqrt/1, Data, 2500, 4) end, 10, 100).
+pool_helper:stop_pool().
+
+%% reduce time testing
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> lists:foldl(fun(N, Sum) -> Sum + math:sqrt(N) end, 0, Data) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> lists:foldl(fun(N, Sum) -> Sum + math:sqrt(N) end, 0, Data) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> lists:foldl(fun(N, Sum) -> Sum + math:sqrt(N) end, 0, Data) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> lists:foldl(fun(N, Sum) -> Sum + math:sqrt(N) end, 0, Data) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_reduce:usual_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, 0) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_reduce:usual_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, 0) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_reduce:usual_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, 0) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_reduce:usual_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, 0) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_reduce:portion_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 250) end, 100, 100).
+performance_tester:time_test(fun() -> parallel_reduce:portion_gen_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 250) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_reduce:portion_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 2500) end, 10, 100).
+performance_tester:time_test(fun() -> parallel_reduce:portion_gen_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 2500) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_reduce:portion_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000) end, 1, 100).
+performance_tester:time_test(fun() -> parallel_reduce:portion_gen_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_reduce:portion_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000) end, 1, 10).
+performance_tester:time_test(fun() -> parallel_reduce:portion_gen_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_reduce:limited_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 250, 4) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_reduce:limited_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 2500, 4) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_reduce:limited_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000, 4) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_reduce:limited_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000, 4) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_reduce:distributed_reduce(fun parallel_reduce_demo:reduce_demo_fun/2, Data, {0, 0}, 250, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_reduce:distributed_reduce(fun parallel_reduce_demo:reduce_demo_fun/2, Data, {0, 0}, 2500, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_reduce:distributed_reduce(fun parallel_reduce_demo:reduce_demo_fun/2, Data, {0, 0}, 10000, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_reduce:distributed_reduce(fun parallel_reduce_demo:reduce_demo_fun/2, Data, {0, 0}, 10000, ['node1@Ushakov', 'node2@ushakov_mv'], 2) end, 1, 10).
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:time_test(fun() -> parallel_reduce:smartmsg_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 250, 4) end, 100, 100).
+
+Data = data_generator:generate_int_data(134217727, 10000).
+performance_tester:time_test(fun() -> parallel_reduce:smartmsg_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 2500, 4) end, 10, 100).
+
+Data = data_generator:generate_int_data(134217727, 100000).
+performance_tester:time_test(fun() -> parallel_reduce:smartmsg_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000, 4) end, 1, 100).
+
+Data = data_generator:generate_int_data(134217727, 1000000).
+performance_tester:time_test(fun() -> parallel_reduce:smartmsg_reduce(fun(N, Sum) -> Sum + math:sqrt(N) end, Data, {0, 0}, 10000, 4) end, 1, 10).
+
+%% map memory testing
+
+Data = data_generator:generate_int_data(134217727, 1000).
+performance_tester:memory_test(fun() -> lists:map(fun(N) -> math:sqrt(N) end, Data) end).
+DataGenerator = fun() -> data_generator:generate_int_data(134217727, 1000) end.
+performance_tester:memory_test(fun(Data) -> lists:map(fun(N) -> math:sqrt(N) end, Data) end, DataGenerator).
+
