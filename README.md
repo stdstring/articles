@@ -30,3 +30,4 @@ My articles in different magazines:
 * [Linux Format Russian April 2014 "Erlang: Testing"](http://www.linuxformat.ru/anons182.phtml)
 * [Linux Format Russian August 2014 "Erlang: Let's test!"](http://www.linuxformat.ru/anons186.phtml)
 * [System admin April 2015 "Create IoC container for myself"](http://samag.ru/archive/article/2932)
+* [System admin March 2016 "Linux Professional Institute exams"](http://samag.ru/archive/article/3153)
